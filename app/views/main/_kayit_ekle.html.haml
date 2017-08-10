@@ -1,0 +1,4 @@
+.s
+  = simple_form_for (:kayit), :url => kayit_ekle_path(@tamirhane.id) do |f|
+    = f.input :kayit_tipi, required: false, as: :select, collection: [:kaborta, :elektrik, :motor, :lastik]
+    = f.button :submit, "oluştur"

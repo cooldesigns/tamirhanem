@@ -1,0 +1,18 @@
+.form  
+  = simple_form_for (@tamirhane) do |f|
+    - if @tamirhane.arac["plaka"].blank?
+      .row
+        %h5 Arac Bilgileri
+        = simple_fields_for :arac do |ff|
+          .three.columns
+            = ff.input :plaka, required: false
+            = ff.input :marka, required: false
+          .three.columns
+            = ff.input :model, required: false
+            = ff.input :yil, required: false
+    .row
+      %h5 Tamir Bilgileri
+      .four.columns
+        = f.input :usta
+        = f.input :status, as: :select, collection: [ "tamire_baslanmadi", "tamirde", "tamir_edildi" ]
+        = f.button :submit, "Devam et", class: 'button-primary'

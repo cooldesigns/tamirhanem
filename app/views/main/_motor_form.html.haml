@@ -1,0 +1,9 @@
+.motor
+	Motor:
+	= simple_form_for :motor, :url => kayit_olustur_path(@tamirhane.id, :type => "motor") do |ff|
+		= ff.input :degisen_parca, required: false 
+		= ff.input :fiyat, required: false
+		= ff.input :tamir_edilen_parca, required: false
+		= ff.input :fiyat, required: false
+		= ff.input :iscilik, required: false
+		= ff.button :submit, "Kaydet"

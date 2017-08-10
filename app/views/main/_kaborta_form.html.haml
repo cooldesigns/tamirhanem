@@ -1,0 +1,9 @@
+.kaborta
+  Kaborta:
+  = simple_form_for :kaborta, :url => kayit_olustur_path(@tamirhane.id, :type => "kaborta") do |ff|
+    = ff.input :degisen_parca, required: false 
+    = ff.input :fiyat, required: false
+    = ff.input :boyanan_parca, required: false
+    = ff.input :fiyat, required: false
+    = ff.input :iscilik, required: false
+    = ff.button :submit, "Kaydet"

@@ -1,0 +1,87 @@
+.show  
+  %h2 Tamir #{@tamirhane.id}
+  %p 
+    %b ID
+    = @tamirhane.id
+  %p 
+    %b Status
+    = @tamirhane.status
+  %p 
+    %b Arac
+    = @tamirhane.arac.values.second
+  %p 
+    %b Model
+    = @tamirhane.arac.values.third
+  %p 
+    %b Plaka
+    = @tamirhane.arac.values.last
+  %p 
+    %b Usta
+    = @tamirhane.usta
+  %p 
+    %b Tarih
+    = @tamirhane.created_at
+  - unless @tamirhane.motor.blank?
+    .card
+      %b Motor Tamiri:
+      %p 
+        %i Degişen Parça:
+        = @tamirhane.motor["degisen_parca"].to_s
+      %p 
+        %i Fiyat:
+        = @tamirhane.motor["fiyat"]
+      %p 
+        %i Tamir Edilen Parça
+        = @tamirhane.motor["tamir_edilen_parca"]
+      %p 
+        %i İşçilik:
+        = @tamirhane.motor["iscilik"]
+  - unless @tamirhane.elektrik.blank?
+    .card
+      %b Elektrik Tamiri:
+      %p 
+        %i Degişen Parça:
+        = @tamirhane.elektrik["degisen_parca"]
+      %p 
+        %i Fiyat:
+        = @tamirhane.motor["fiyat"]
+  - unless @tamirhane.kaborta.blank?
+    .card
+      %b Kaborta Tamiri:
+      %p 
+        %i Degişen Parça:
+        = @tamirhane.kaborta["degisen_parca"]
+      %p 
+        %i Fiyat:
+        = @tamirhane.kaborta["fiyat"]
+      %p 
+        %i Boyanan Parça
+        = @tamirhane.kaborta["boyanan_parca"]
+      %p 
+        %i Fiyat
+        = @tamirhane.kaborta["fiyat"]
+      %p 
+        %i İşçilik:
+        = @tamirhane.motor["iscilik"]
+  - unless @tamirhane.lastik.blank?
+    .card
+      %b Lastik:
+      %p 
+        %i Degişen Lastik:
+        = @tamirhane.lastik["degisen_lastik"]
+      %p 
+        %i Adet:
+        = @tamirhane.lastik["adet"]
+      %p 
+        %i Fiyat
+        = @tamirhane.lastik["fiyat"]
+  %p
+    %b 
+    = render 'main/kayit_ekle'
+  %p
+    %b 
+    = link_to 'edit', "/#{@tamirhane.id}/edit"
+    \|
+    = link_to 'delete', "/#{@tamirhane.id}", :method => :delete
+    \|
+    = link_to 'back', "/"

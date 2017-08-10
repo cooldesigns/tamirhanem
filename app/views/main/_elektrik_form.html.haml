@@ -1,0 +1,6 @@
+.elektrik
+  Elektrik:
+  = simple_form_for :elektrik, :url => kayit_olustur_path(@tamirhane.id, :type => "elektrik") do |ff|
+    = ff.input :degisen_parca, required: false 
+    = ff.input :fiyat, required: false
+    = ff.button :submit, "Kaydet"

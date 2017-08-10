@@ -1,0 +1,45 @@
+%header
+  %h1 Tamirhane Projesi
+  .search
+    = simple_form_for :search, :url => '/search', :method => 'post' do |f|
+      = f.input :plaka, placeholder: 'Plaka No', label: false
+      = f.button :submit, "Search", class: 'button-primary'
+      = link_to 'Yeni Kayıt', '/new', class: 'button'
+  
+- if @tamirhanes.count == 0
+  %h3 Hiç kayıt bulunamadı
+- unless @tamirhanes.count == 0
+  %h3 Tamir Listesi
+  %table
+    %tr
+      %th ID
+      %th Status
+      %th Arac
+      %th Model
+      %th Plaka
+      %th Usta
+      %th Tarih
+      %th
+      %th
+      %th 
+      %th 
+    
+    - @tamirhanes.each do |t|
+      %tr
+        %td= t.id
+        %td= t.status
+        %td= t.arac.values.second
+        %td= t.arac.values.third
+        %td= t.arac.values.last
+        %td= t.usta
+        %td= t.created_at
+        %td
+          .js-form
+            = simple_form_for (:kayit), :url => kayit_ekle_path(t.id) do |f|
+              = f.input :kayit_tipi, required: false, as: :select, collection: [:kaborta, :elektrik, :motor, :lastik]
+              = f.button :submit, "oluştur", class: 'button-primary'
+
+        %td= link_to 'show', "/#{t.id}"
+        \|
+        %td= link_to 'edit', "/#{t.id}/edit"
+        %td= link_to 'delete', "/#{t.id}", :method => :delete

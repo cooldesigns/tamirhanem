@@ -1,0 +1,7 @@
+.lastik
+  Lastik:
+  = simple_form_for :lastik, :url => kayit_olustur_path(@tamirhane.id, :type => "lastik") do |ff|
+    = ff.input :degisen_lastik, required: false 
+    = ff.input :adet, required: false
+    = ff.input :fiyat, required: false
+    = ff.button :submit, "Kaydet"
